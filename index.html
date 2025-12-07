@@ -1,492 +1,101 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мой дипломный сайт</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            color: #fff;
-            min-height: 100vh;
-            padding-bottom: 40px;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        /* Заголовок сайта */
-        .header {
-            text-align: center;
-            padding: 40px 20px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .header h1 {
-            font-size: 3.5rem;
-            margin-bottom: 10px;
-            background: linear-gradient(90deg, #00dbde, #fc00ff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            animation: titleGlow 3s ease-in-out infinite alternate;
-        }
-        
-        @keyframes titleGlow {
-            from {
-                text-shadow: 0 0 10px rgba(0, 219, 222, 0.5);
-            }
-            to {
-                text-shadow: 0 0 20px rgba(252, 0, 255, 0.7), 0 0 30px rgba(252, 0, 255, 0.4);
-            }
-        }
-        
-        .header p {
-            font-size: 1.2rem;
-            color: #a0a0c0;
-            max-width: 700px;
-            margin: 0 auto;
-            line-height: 1.6;
-        }
-        
-        /* Карточки генераторов */
-        .generators-section {
-            padding: 20px;
-        }
-        
-        .section-title {
-            text-align: center;
-            font-size: 2.2rem;
-            margin-bottom: 40px;
-            color: #ffffff;
-            position: relative;
-            padding-bottom: 15px;
-        }
-        
-        .section-title:after {
-            content: '';
-            position: absolute;
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(90deg, #00dbde, #fc00ff);
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 2px;
-        }
-        
-        .generators-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
-        }
-        
-        .generator-card {
-            background: rgba(30, 30, 60, 0.7);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .generator-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
-            border-color: rgba(0, 219, 222, 0.3);
-        }
-        
-        .card-header {
-            padding: 25px 25px 15px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        
-        .card-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #00dbde, #fc00ff);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
-        
-        /* Особый стиль для Figma */
-        .figma-icon {
-            background: linear-gradient(135deg, #F24E1E, #A259FF, #1ABCFE, #0ACF83);
-        }
-        
-        .card-title {
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: #ffffff;
-        }
-        
-        .card-body {
-            padding: 0 25px 20px;
-            color: #b0b0d0;
-            line-height: 1.5;
-            font-size: 0.95rem;
-        }
-        
-        .card-link {
-            display: block;
-            margin: 0 25px 25px;
-            padding: 12px 20px;
-            background: linear-gradient(90deg, #00dbde, #fc00ff);
-            color: white;
-            text-align: center;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
-        
-        /* Особый стиль для ссылки Figma */
-        .figma-link {
-            background: linear-gradient(90deg, #F24E1E, #A259FF);
-        }
-        
-        .card-link:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-        }
-        
-        /* Футер */
-        .footer {
-            text-align: center;
-            margin-top: 60px;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #a0a0c0;
-            font-size: 0.9rem;
-        }
-        
-        /* Счетчик генераторов */
-        .counter {
-            text-align: center;
-            margin-top: 10px;
-            font-size: 1.1rem;
-            color: #a0a0c0;
-        }
-        
-        .counter span {
-            color: #00dbde;
-            font-weight: bold;
-        }
-        
-        /* Адаптивность */
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2.5rem;
-            }
-            
-            .generators-grid {
-                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-                gap: 20px;
-            }
-            
-            .section-title {
-                font-size: 1.8rem;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .header h1 {
-                font-size: 2rem;
-            }
-            
-            .header p {
-                font-size: 1rem;
-            }
-            
-            .generators-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        /* Анимация появления */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .generator-card {
-            animation: fadeInUp 0.5s ease forwards;
-            opacity: 0;
-        }
-        
-        .generator-card:nth-child(1) { animation-delay: 0.1s; }
-        .generator-card:nth-child(2) { animation-delay: 0.2s; }
-        .generator-card:nth-child(3) { animation-delay: 0.3s; }
-        .generator-card:nth-child(4) { animation-delay: 0.4s; }
-        .generator-card:nth-child(5) { animation-delay: 0.5s; }
-        .generator-card:nth-child(6) { animation-delay: 0.6s; }
-        .generator-card:nth-child(7) { animation-delay: 0.7s; }
-        .generator-card:nth-child(8) { animation-delay: 0.8s; }
-        .generator-card:nth-child(9) { animation-delay: 0.9s; }
-        .generator-card:nth-child(10) { animation-delay: 1.0s; }
-        .generator-card:nth-child(11) { animation-delay: 1.1s; }
-        .generator-card:nth-child(12) { animation-delay: 1.2s; }
-        .generator-card:nth-child(13) { animation-delay: 1.3s; }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <!-- Заголовок сайта -->
-        <header class="header">
-            <h1>Мой дипломный сайт</h1>
-            <p>Коллекция полезных онлайн-генераторов для дизайна, программирования и контента. Все инструменты собраны в одном месте для вашего удобства.</p>
-        </header>
-        
-        <!-- Секция с генераторами -->
-        <section class="generators-section">
-            <h2 class="section-title">Коллекция генераторов</h2>
-            <div class="counter">Всего генераторов: <span>13</span></div>
-            
-            <div class="generators-grid">
-                <!-- Генератор 1 -->
-                <div class="generator-card">
-                    <div class="card-header">
-                        <div class="card-icon">
-                            <i class="fas fa-palette"></i>
-                        </div>
-                        <h3 class="card-title">Генератор цветов</h3>
-                    </div>
-                    <div class="card-body">
-                        <p>Создавайте гармоничные цветовые палитры для ваших проектов. Подбирайте сочетания цветов по различным правилам.</p>
-                    </div>
-                    <a href="https://coolors.co/" target="_blank" class="card-link">Перейти к генератору</a>
-                </div>
-                
-                <!-- Генератор 2 -->
-                <div class="generator-card">
-                    <div class="card-header">
-                        <div class="card-icon">
-                            <i class="fas fa-qrcode"></i>
-                        </div>
-                        <h3 class="card-title">Генератор QR-кодов</h3>
-                    </div>
-                    <div class="card-body">
-                        <p>Создавайте QR-коды для ссылок, контактов, Wi-Fi и многого другого. Настраивайте дизайн и цветовую схему.</p>
-                    </div>
-                    <a href="https://www.qr-code-generator.com/" target="_blank" class="card-link">Перейти к генератору</a>
-                </div>
-                
-                <!-- Генератор 3 -->
-                <div class="generator-card">
-                    <div class="card-header">
-                        <div class="card-icon">
-                            <i class="fas fa-lock"></i>
-                        </div>
-                        <h3 class="card-title">Генератор паролей</h3>
-                    </div>
-                    <div class="card-body">
-                        <p>Создавайте надежные и безопасные пароли для ваших аккаунтов. Настраивайте длину и типы используемых символов.</p>
-                    </div>
-                    <a href="https://www.lastpass.com/features/password-generator" target="_blank" class="card-link">Перейти к генератору</a>
-                </div>
-                
-                <!-- Генератор 4 -->
-                <div class="generator-card">
-                    <div class="card-header">
-                        <div class="card-icon">
-                            <i class="fas fa-file-alt"></i>
-                        </div>
-                        <h3 class="card-title">Генератор текста</h3>
-                    </div>
-                    <div class="card-body">
-                        <p>Создавайте Lorem Ipsum текст для заполнения макетов. Настраивайте количество абзацев и длину текста.</p>
-                    </div>
-                    <a href="https://www.lipsum.com/" target="_blank" class="card-link">Перейти к генератору</a>
-                </div>
-                
-                <!-- Генератор 5 -->
-                <div class="generator-card">
-                    <div class="card-header">
-                        <div class="card-icon">
-                            <i class="fas fa-image"></i>
-                        </div>
-                        <h3 class="card-title">Генератор изображений</h3>
-                    </div>
-                    <div class="card-body">
-                        <p>Создавайте уникальные изображения для проектов с помощью искусственного интеллекта.</p>
-                    </div>
-                    <a href="https://www.craiyon.com/" target="_blank" class="card-link">Перейти к генератору</a>
-                </div>
-                
-                <!-- Генератор 6 -->
-                <div class="generator-card">
-                    <div class="card-header">
-                        <div class="card-icon">
-                            <i class="fas fa-chart-bar"></i>
-                        </div>
-                        <h3 class="card-title">Генератор графиков</h3>
-                    </div>
-                    <div class="card-body">
-                        <p>Создавайте красивые и информативные графики и диаграммы для презентаций и отчетов.</p>
-                    </div>
-                    <a href="https://www.chartjs.org/" target="_blank" class="card-link">Перейти к генератору</a>
-                </div>
-                
-                <!-- Генератор 7 -->
-                <div class="generator-card">
-                    <div class="card-header">
-                        <div class="card-icon">
-                            <i class="fas fa-code"></i>
-                        </div>
-                        <h3 class="card-title">Генератор кода CSS</h3>
-                    </div>
-                    <div class="card-body">
-                        <p>Генератор готового CSS кода для теней, градиентов, анимаций и других стилей.</p>
-                    </div>
-                    <a href="https://cssgenerator.org/" target="_blank" class="card-link">Перейти к генератору</a>
-                </div>
-                
-                <!-- Генератор 8 -->
-                <div class="generator-card">
-                    <div class="card-header">
-                        <div class="card-icon">
-                            <i class="fas fa-fingerprint"></i>
-                        </div>
-                        <h3 class="card-title">Генератор отпечатков</h3>
-                    </div>
-                    <div class="card-body">
-                        <p>Создавайте уникальные паттерны и фоны для ваших проектов с различными настройками.</p>
-                    </div>
-                    <a href="https://www.magicpattern.design/tools/css-backgrounds" target="_blank" class="card-link">Перейти к генератору</a>
-                </div>
-                
-                <!-- Генератор 9 -->
-                <div class="generator-card">
-                    <div class="card-header">
-                        <div class="card-icon">
-                            <i class="fas fa-signature"></i>
-                        </div>
-                        <h3 class="card-title">Генератор подписей</h3>
-                    </div>
-                    <div class="card-body">
-                        <p>Создавайте красивые подписи для электронных писем и документов с различными стилями.</p>
-                    </div>
-                    <a href="https://www.hubspot.com/email-signature-generator" target="_blank" class="card-link">Перейти к генератору</a>
-                </div>
-                
-                <!-- Генератор 10 -->
-                <div class="generator-card">
-                    <div class="card-header">
-                        <div class="card-icon">
-                            <i class="fas fa-music"></i>
-                        </div>
-                        <h3 class="card-title">Генератор музыки</h3>
-                    </div>
-                    <div class="card-body">
-                        <p>Создавайте простые музыкальные композиции и мелодии с помощью искусственного интеллекта.</p>
-                    </div>
-                    <a href="https://www.aiva.ai/" target="_blank" class="card-link">Перейти к генератору</a>
-                </div>
-                
-                <!-- Генератор 11 -->
-                <div class="generator-card">
-                    <div class="card-header">
-                        <div class="card-icon">
-                            <i class="fas fa-user-circle"></i>
-                        </div>
-                        <h3 class="card-title">Генератор аватаров</h3>
-                    </div>
-                    <div class="card-body">
-                        <p>Создавайте уникальные аватары для профилей в социальных сетях и на форумах.</p>
-                    </div>
-                    <a href="https://avatarmaker.com/" target="_blank" class="card-link">Перейти к генератору</a>
-                </div>
-                
-                <!-- Генератор 12 -->
-                <div class="generator-card">
-                    <div class="card-header">
-                        <div class="card-icon">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
-                        <h3 class="card-title">Генератор сертификатов</h3>
-                    </div>
-                    <div class="card-body">
-                        <p>Создавайте красивые сертификаты для наград, достижений и участия в мероприятиях.</p>
-                    </div>
-                    <a href="https://www.canva.com/certificate-templates/" target="_blank" class="card-link">Перейти к генератору</a>
-                </div>
-                
-                <!-- Генератор 13 - FIGMA -->
-                <div class="generator-card">
-                    <div class="card-header">
-                        <div class="card-icon figma-icon">
-                            <i class="fab fa-figma"></i>
-                        </div>
-                        <h3 class="card-title">Figma</h3>
-                    </div>
-                    <div class="card-body">
-                        <p>Интерфейс для совместной работы над дизайном в режиме реального времени. Создавайте прототипы, макеты и дизайн-системы с коллегами прямо в браузере. Идеально для командной работы над UI/UX проектами.</p>
-                    </div>
-                    <a href="https://www.figma.com/proto/LWIPcsV9KNNpgyR9r5oK2p/Untitled?node-id=1-2&t=PM6WN4sejmeRxWqU-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1" target="_blank" class="card-link figma-link">Перейти к Figma</a>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Футер -->
-        <footer class="footer">
-            <p>Дипломный проект &copy; 2023. Все генераторы взяты из открытых источников.</p>
-            <p>Сайт создан в образовательных целях.</p>
-        </footer>
-    </div>
 
-    <script>
-        // Простая анимация при загрузке страницы
-        document.addEventListener('DOMContentLoaded', function() {
-            // Добавляем класс для активации анимации
-            const cards = document.querySelectorAll('.generator-card');
-            
-            // Анимация появления карточек с задержкой
-            cards.forEach((card, index) => {
-                card.style.animationDelay = `${0.1 + index * 0.1}s`;
-            });
-            
-            // Эффект при наведении на заголовок
-            const title = document.querySelector('.header h1');
-            title.addEventListener('mouseenter', function() {
-                this.style.transform = 'scale(1.05)';
-                this.style.transition = 'transform 0.3s ease';
-            });
-            
-            title.addEventListener('mouseleave', function() {
-                this.style.transform = 'scale(1)';
-            });
-            
-            // Обновляем счетчик при загрузке
-            const counter = document.querySelector('.counter span');
-            counter.textContent = cards.length;
-        });
-    </script>
+<head>
+	<link rel="stylesheet" href="my.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Metro</title>
+
+</head>
+
+<body>
+	<!-- Шапка сайта -->
+	<header>
+		<div class="container">
+			<div class="header-content">
+				<div class="logo">Diplom</div>
+        <img src=https://i.ytimg.com/vi/15AhMImDv-Y/hqdefault.jpg>
+                <nav>
+				<ul>
+					<li><a href="https://metro.fandom.com/ru/wiki/Metro_2033">О Metro 2033</a></li>
+					<li><a href="https://metro.fandom.com/ru/wiki/Metro:_Last_Light_Redux">О Metro last light</a></li>
+					<li><a href="https://metro.fandom.com/ru/wiki/Metro_Exodus">О Metro Exodus</a></li>
+					<li><a href="https://metro.fandom.com/ru/wiki/Канон_«Метро_2033»">Канон «Метро 2033»</a></li>
+				</ul>
+				</nav>
+			</div>
+		</div>
+	</header>
+
+	<!-- Основной контент -->
+	<main>
+		<div class="container">
+			<!-- Герой-секция -->
+			<section class="hero">
+				<h1>Добро пожаловать в мою дипломную работу</h1>
+				<p>Здесь вы найдете мои работы</p>
+			</section>
+
+			<!-- Основной контент -->
+			<section class="content-section">
+				<h3>Metro 2033</h3>
+				<p>«Metro 2033» — компьютерная игра в жанре постапокалиптического шутера от первого лица с элементами
+					survival horror и стелса. Разработана украинской студией 4A Games и издана американской компанией
+					THQ в марте 2010 года.</p>
+				<p>Сюжет игры разворачивается в альтернативном мире будущего, серьёзно пострадавшем от Третьей мировой
+					войны. Главный герой, Артём, покидает подземный мир Московского метрополитена, в котором обитают
+					выжившие в апокалипсисе люди, и отправляется на поверхность, чтобы разобраться с угрозой, исходящей
+					от мутантов.</p>
+				<p>Геймплей состоит в исследовании локаций и сражениях с противниками. Бои в основном происходят в двух
+					форматах: перестрелок с участниками различных воинствующих группировок московского метро и стычек с
+					агрессивными мутантами. </p>
+				<h3>Чтобы в будущем наш мир не стал таким,пользуйтесь </h3>
 </body>
-</html>
+<link rel="stylesheet" href="./online_form_drweb.css">
+    
+<form class="drweb-form" method="POST" id="drweb_online_scan_form" enctype="multipart/form-data" action="https://online.drweb.com/result/" target="drweb_scan_drweb-form_popup_window">
+    <div class="drweb-form__wrapper">
+        <div class="drweb-form__top">
+            <a href="https://www.drweb.ru/" target="_blank">
+                <i>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="134" height="24" viewBox="0 0 134 24" fill="#1A1A1A">
+                        <path d="M53.6706 11.1841C53.6706 7.51251 51.9517 2.7787 44.9225 2.7787H35.3839V19.4432H44.9225C52.2049 19.4432 53.6706 14.4862 53.6706 11.1841ZM42.0601 15.279V6.7043H43.403C45.0145 6.7043 46.6798 7.22771 46.6798 11.084C46.6798 14.9403 44.8918 15.279 43.403 15.279H42.0601ZM61.2446 14.8172C61.2446 12.6466 62.8331 11.6074 64.6979 11.6074C65.1461 11.6228 65.5912 11.6873 66.0254 11.7999V6.80436C65.6804 6.72544 65.3279 6.68415 64.9741 6.68121C64.0725 6.70615 63.2031 7.02334 62.4962 7.58531C61.7893 8.14728 61.2829 8.92379 61.0528 9.79859H60.9454V6.966H54.9982V19.4432H61.2446V14.8172ZM66.0254 19.4355H71.2896V14.8172H66.0024L66.0254 19.4355ZM90.8809 13.4317H90.7811L88.103 2.76331H81.726L78.9711 13.4317H78.8714L76.7534 2.76331H70.5146L74.6124 19.4278H81.8718L84.596 8.57473H84.6958L87.5811 19.4278H94.7101L98.9077 2.76331H92.9758L90.8809 13.4317ZM106.689 12.9468H114.808V9.25978H106.666V6.7043H115.276V2.76331H99.9667V19.4432H115.276V15.5099H106.666L106.689 12.9468ZM130.094 11.0225V10.9301C132.258 10.5452 133.624 8.99808 133.624 7.08146C133.624 5.54201 132.634 2.74792 127.193 2.74792H116.711V19.4432H126.817C129.027 19.4432 134 19.2046 134 14.9865C134 12.3695 131.844 11.2765 130.071 11.0378L130.094 11.0225ZM123.042 6.1424H124.761C126.595 6.1424 127.117 7.05067 127.117 7.73573C127.117 8.21296 126.894 9.35985 124.607 9.35985H123.073L123.042 6.1424ZM124.73 16.0487H123.042V12.6543H124.577C125.144 12.6543 127.209 12.6543 127.209 14.3477C127.193 14.9403 126.848 16.0641 124.707 16.0641L124.73 16.0487ZM11.4186 7.38166L16.4757 4.64913L21.5711 7.40475C21.6996 7.07356 21.7647 6.72102 21.7629 6.36562C21.7629 4.20269 19.4071 2.44772 16.4987 2.44772C13.5903 2.44772 11.2345 4.20269 11.2345 6.36562C11.2384 6.71228 11.3006 7.05579 11.4186 7.38166ZM24.6252 7.09686L28.1015 6.4195L28.8228 8.9211L30.5494 3.58691L23.5816 5.73445L24.6252 7.09686ZM25.5461 10.3374L28.7384 11.1071L28.0708 13.1546L32.936 10.6299L25.0857 8.39769L25.5461 10.3374ZM21.7859 23.9615L29.4597 14.9942L25.3773 12.6235L21.7859 23.9615ZM21.2641 3.16357L22.7298 4.65683L26.6588 0H21.0799L23.1826 1.26235L21.2641 3.16357ZM11.6949 3.16357L9.77643 1.26235L11.8714 0H6.30019L10.2292 4.66453L11.6949 3.16357ZM3.52995 15.0327L11.2038 24L7.61242 12.6543L3.52995 15.0327ZM4.8345 6.44259L8.31073 7.12765L9.3467 5.73445L2.38655 3.57922L4.12083 8.9211L4.8345 6.44259ZM4.20525 11.1148L7.39755 10.3451L7.85798 8.3746L0 10.6376L4.87287 13.1623L4.20525 11.1148ZM13.7668 7.72803L14.4344 10.2219H14.4728L15.4167 7.5279H17.5807L18.5783 10.2219L19.1538 7.73573L16.4373 6.19628L13.7668 7.72803ZM23.8579 10.3066L21.0186 8.76716L19.9903 11.7768H17.4579L16.4987 9.02117H16.4603L15.5011 11.7768H12.9534L11.9251 8.77486L9.08579 10.3143C9.08579 10.3143 8.04982 13.855 12.0018 16.7646C13.011 17.5938 14.1389 18.2658 15.3476 18.7582L15.2018 18.2425H17.8109L17.6344 18.7582C18.8433 18.2725 19.9675 17.5969 20.9648 16.7569C24.8478 13.8165 23.8579 10.3066 23.8579 10.3066ZM18.0718 17.3881H14.8795L14.5342 16.372H18.4171L18.0718 17.3881ZM18.7164 15.5099H14.2349L13.8896 14.5016H19.0387L18.7164 15.5099ZM19.3533 13.6318H13.598L13.2527 12.6235H19.6987L19.3533 13.6318Z"/>
+                    </svg>
+                </i>
+            </a>
+            <p class="drweb-form__title">Проверка файлов</p>
+        </div>
+        <div class="drweb-form__bottom">
+            <div class="drweb-form__text">
+                <p class="drweb-form__inner" id="drweb_url_scan_init">
+                    <span class="drweb-form_blue">Выберите</span> или перетащите файл (до 10 МБ)
+                </p>
+                <div id="drweb-form_file" class="drweb-form_file" style="display: none;">
+                    <span class="drweb-form_blue" id="drweb_url_scan"></span>
+                    <i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M18.7076 17.2903C19.0975 17.6802 19.0975 18.3201 18.7076 18.7101C18.5077 18.9 18.2578 19 17.9979 19C17.738 19 17.488 18.9 17.2881 18.7101L12 13.421L6.71189 18.7101C6.51196 18.9 6.26205 19 6.00214 19C5.74223 19 5.49232 18.9 5.2924 18.7101C4.90253 18.3201 4.90253 17.6802 5.2924 17.2903L10.5805 12.0012L5.2924 6.71219C4.90253 6.32226 4.90253 5.68238 5.2924 5.29245C5.68226 4.90252 6.32203 4.90252 6.71189 5.29245L12 10.5815L17.2881 5.29245C17.678 4.90252 18.3177 4.90252 18.7076 5.29245C19.0975 5.68238 19.0975 6.32226 18.7076 6.71219L13.4195 12.0012L18.7076 17.2903Z" fill="#006AF5"/>
+                        </svg>
+                    </i>
+                </div>
+                <input class="drweb-form__input" name="file" id="file_selection_input" type="file" title="Обзор" onchange="document.querySelector('.drweb-form_file').style.display = 'flex'; document.getElementById('drweb_url_scan').innerHTML = event.target.files[0].name; document.getElementById('drweb_url_scan_init').style.display = 'none'">
+            </div>
+            <button onclick="do_scan_file_01();" class="drweb-form__btn">Проверить</button>
+        </div>
+    </div>
+</form>
+  
+<script language="JavaScript">
+    function do_scan_file_01()
+    {
+        var left = ( screen.width - 640 )/2;
+        var top =  ( screen.height - 400 )/2;
+        window.open( "",
+                    "drweb_scan_drweb-form_popup_window",
+                    "width=640"+",height=400,left="+left+",top="+top+",scrollbars=yes,resizable=yes" );
+        document.getElementById( "drweb_online_scan_form" ).submit();
+    }
+</script>
+				
+</html
