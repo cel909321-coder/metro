@@ -15,8 +15,16 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background-color: #f9f9f9;
+            color: #d8d2c4;
+            background-color: #0a0a0a;
+            background-image:
+                linear-gradient(rgba(8, 8, 10, 0.78), rgba(8, 8, 10, 0.88)),
+                url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            min-height: 100vh;
         }
 
         .container {
@@ -27,10 +35,12 @@
 
         /* ===== ШАПКА ===== */
         header {
-            background-color: #2c3e50;
-            color: white;
+            background-color: rgba(12, 12, 14, 0.92);
+            color: #d8d2c4;
             padding: 1rem 0;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.8);
+            border-bottom: 1px solid #3a3226;
+            backdrop-filter: blur(6px);
         }
 
         .header-content {
@@ -45,12 +55,17 @@
             font-size: 1.5rem;
             font-weight: bold;
             white-space: nowrap;
+            color: #c9a227;
+            text-shadow: 0 0 10px rgba(201, 162, 39, 0.4);
+            letter-spacing: 1px;
         }
 
         .header-content img {
             max-height: 48px;
             width: auto;
             border-radius: 4px;
+            filter: grayscale(60%) brightness(0.85) contrast(1.1);
+            border: 1px solid #3a3226;
         }
 
         nav ul {
@@ -61,14 +76,17 @@
         }
 
         nav ul li a {
-            color: white;
+            color: #b8b0a0;
             text-decoration: none;
-            transition: color 0.3s;
+            transition: color 0.3s, text-shadow 0.3s;
             font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         nav ul li a:hover {
-            color: #3498db;
+            color: #c9a227;
+            text-shadow: 0 0 8px rgba(201, 162, 39, 0.5);
         }
 
         /* ===== ОСНОВНОЙ КОНТЕНТ ===== */
@@ -78,39 +96,62 @@
         }
 
         .hero {
-            background: linear-gradient(135deg, #3498db, #2c3e50);
-            color: white;
+            background: linear-gradient(135deg, rgba(20, 18, 15, 0.92), rgba(35, 30, 22, 0.95));
+            color: #e8e0d0;
             padding: 3rem 1rem;
             text-align: center;
             margin-bottom: 2rem;
             border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.7);
+            border: 1px solid #3a3226;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #c9a227, transparent);
         }
 
         .hero h1 {
             font-size: 2.5rem;
             margin-bottom: 1rem;
+            color: #c9a227;
+            text-shadow: 0 0 15px rgba(201, 162, 39, 0.3), 2px 2px 4px rgba(0, 0, 0, 0.9);
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
         .hero p {
             font-size: 1.2rem;
             max-width: 700px;
             margin: 0 auto;
+            color: #b8b0a0;
         }
 
         .content-section {
-            background: white;
+            background: rgba(16, 14, 12, 0.9);
             padding: 2rem;
             border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.7);
             margin-bottom: 2rem;
+            border: 1px solid #3a3226;
+            backdrop-filter: blur(4px);
         }
 
         .content-section h3 {
-            color: #2c3e50;
+            color: #c9a227;
             margin: 1.5rem 0 0.75rem;
             padding-bottom: 0.5rem;
-            border-bottom: 2px solid #f0f0f0;
+            border-bottom: 2px solid #3a3226;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(201, 162, 39, 0.2);
         }
 
         .content-section h3:first-of-type {
@@ -120,151 +161,18 @@
         .content-section p {
             margin-bottom: 1rem;
             text-align: justify;
-        }
-
-        /* ===== ФОРМА DR.WEB ===== */
-        .drweb-form {
-            background: #ffffff;
-            border: 1px solid #e0e0e0;
-            border-radius: 10px;
-            padding: 1.5rem;
-            margin-top: 2rem;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            transition: box-shadow 0.3s;
-        }
-
-        .drweb-form:hover {
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-        }
-
-        .drweb-form__wrapper {
-            display: flex;
-            flex-direction: column;
-            gap: 1.25rem;
-        }
-
-        .drweb-form__top {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .drweb-form__top a {
-            display: inline-flex;
-            align-items: center;
-            text-decoration: none;
-        }
-
-        .drweb-form__title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #1a1a1a;
-            margin: 0;
-        }
-
-        .drweb-form__bottom {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .drweb-form__text {
-            flex: 1;
-            min-width: 200px;
-            position: relative;
-        }
-
-        .drweb-form__inner {
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            padding: 0.6rem 1rem;
-            border: 2px dashed #c0c0c0;
-            border-radius: 8px;
-            background: #fafafa;
-            color: #555;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: border-color 0.3s, background 0.3s;
-            margin: 0;
-        }
-
-        .drweb-form__inner:hover {
-            border-color: #006af5;
-            background: #f0f7ff;
-        }
-
-        .drweb-form_blue {
-            color: #006af5;
-            font-weight: 600;
-        }
-
-        .drweb-form_file {
-            display: none;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0.6rem 1rem;
-            border: 2px solid #006af5;
-            border-radius: 8px;
-            background: #f0f7ff;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .drweb-form_file:hover {
-            background: #e0efff;
-        }
-
-        .drweb-form_file i {
-            display: flex;
-            align-items: center;
-            flex-shrink: 0;
-        }
-
-        .drweb-form_file svg {
-            display: block;
-        }
-
-        .drweb-form__input {
-            position: absolute;
-            inset: 0;
-            opacity: 0;
-            cursor: pointer;
-            width: 100%;
-            height: 100%;
-        }
-
-        .drweb-form__btn {
-            padding: 0.7rem 2rem;
-            background: #006af5;
-            color: #fff;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.3s, transform 0.15s;
-            white-space: nowrap;
-        }
-
-        .drweb-form__btn:hover {
-            background: #0056c7;
-        }
-
-        .drweb-form__btn:active {
-            transform: scale(0.97);
+            color: #c8c0b0;
         }
 
         /* ===== ПОДВАЛ ===== */
         footer {
-            background-color: #2c3e50;
-            color: white;
+            background-color: rgba(12, 12, 14, 0.92);
+            color: #8a8272;
             text-align: center;
             padding: 1.5rem 0;
             margin-top: 2rem;
+            border-top: 1px solid #3a3226;
+            backdrop-filter: blur(6px);
         }
 
         /* ===== АДАПТИВНОСТЬ ===== */
@@ -293,16 +201,6 @@
 
             .content-section {
                 padding: 1.25rem;
-            }
-
-            .drweb-form__bottom {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .drweb-form__btn {
-                width: 100%;
-                text-align: center;
             }
         }
 
@@ -336,7 +234,7 @@
     <header>
         <div class="container">
             <div class="header-content">
-                <div class="logo">Metro Diplom</div>
+                <div class="logo">METRO DIPLOM</div>
                 <img src="https://i.ytimg.com/vi/15AhMImDv-Y/hqdefault.jpg" alt="Metro">
                 <nav>
                     <ul>
@@ -373,42 +271,6 @@
                 <p>Геймплей состоит в исследовании локаций и сражениях с противниками. Бои в основном происходят в двух
                     форматах: перестрелок с участниками различных воинствующих группировок московского метро и стычек с
                     агрессивными мутантами.</p>
-
-                <h3>Чтобы в будущем наш мир не стал таким, пользуйтесь Dr.Web</h3>
-
-                <!-- Форма Dr.Web -->
-                <form class="drweb-form" method="POST" id="drweb_online_scan_form" enctype="multipart/form-data"
-                      action="https://online.drweb.com/result/" target="drweb_scan_drweb-form_popup_window">
-                    <div class="drweb-form__wrapper">
-                        <div class="drweb-form__top">
-                            <a href="https://www.drweb.ru/" target="_blank" rel="noopener">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="134" height="24" viewBox="0 0 134 24" fill="#1A1A1A">
-                                    <path d="M53.6706 11.1841C53.6706 7.51251 51.9517 2.7787 44.9225 2.7787H35.3839V19.4432H44.9225C52.2049 19.4432 53.6706 14.4862 53.6706 11.1841ZM42.0601 15.279V6.7043H43.403C45.0145 6.7043 46.6798 7.22771 46.6798 11.084C46.6798 14.9403 44.8918 15.279 43.403 15.279H42.0601ZM61.2446 14.8172C61.2446 12.6466 62.8331 11.6074 64.6979 11.6074C65.1461 11.6228 65.5912 11.6873 66.0254 11.7999V6.80436C65.6804 6.72544 65.3279 6.68415 64.9741 6.68121C64.0725 6.70615 63.2031 7.02334 62.4962 7.58531C61.7893 8.14728 61.2829 8.92379 61.0528 9.79859H60.9454V6.966H54.9982V19.4432H61.2446V14.8172ZM66.0254 19.4355H71.2896V14.8172H66.0024L66.0254 19.4355ZM90.8809 13.4317H90.7811L88.103 2.76331H81.726L78.9711 13.4317H78.8714L76.7534 2.76331H70.5146L74.6124 19.4278H81.8718L84.596 8.57473H84.6958L87.5811 19.4278H94.7101L98.9077 2.76331H92.9758L90.8809 13.4317ZM106.689 12.9468H114.808V9.25978H106.666V6.7043H115.276V2.76331H99.9667V19.4432H115.276V15.5099H106.666L106.689 12.9468ZM130.094 11.0225V10.9301C132.258 10.5452 133.624 8.99808 133.624 7.08146C133.624 5.54201 132.634 2.74792 127.193 2.74792H116.711V19.4432H126.817C129.027 19.4432 134 19.2046 134 14.9865C134 12.3695 131.844 11.2765 130.071 11.0378L130.094 11.0225ZM123.042 6.1424H124.761C126.595 6.1424 127.117 7.05067 127.117 7.73573C127.117 8.21296 126.894 9.35985 124.607 9.35985H123.073L123.042 6.1424ZM124.73 16.0487H123.042V12.6543H124.577C125.144 12.6543 127.209 12.6543 127.209 14.3477C127.193 14.9403 126.848 16.0641 124.707 16.0641L124.73 16.0487ZM11.4186 7.38166L16.4757 4.64913L21.5711 7.40475C21.6996 7.07356 21.7647 6.72102 21.7629 6.36562C21.7629 4.20269 19.4071 2.44772 16.4987 2.44772C13.5903 2.44772 11.2345 4.20269 11.2345 6.36562C11.2384 6.71228 11.3006 7.05579 11.4186 7.38166ZM24.6252 7.09686L28.1015 6.4195L28.8228 8.9211L30.5494 3.58691L23.5816 5.73445L24.6252 7.09686ZM25.5461 10.3374L28.7384 11.1071L28.0708 13.1546L32.936 10.6299L25.0857 8.39769L25.5461 10.3374ZM21.7859 23.9615L29.4597 14.9942L25.3773 12.6235L21.7859 23.9615ZM21.2641 3.16357L22.7298 4.65683L26.6588 0H21.0799L23.1826 1.26235L21.2641 3.16357ZM11.6949 3.16357L9.77643 1.26235L11.8714 0H6.30019L10.2292 4.66453L11.6949 3.16357ZM3.52995 15.0327L11.2038 24L7.61242 12.6543L3.52995 15.0327ZM4.8345 6.44259L8.31073 7.12765L9.3467 5.73445L2.38655 3.57922L4.12083 8.9211L4.8345 6.44259ZM4.20525 11.1148L7.39755 10.3451L7.85798 8.3746L0 10.6376L4.87287 13.1623L4.20525 11.1148ZM13.7668 7.72803L14.4344 10.2219H14.4728L15.4167 7.5279H17.5807L18.5783 10.2219L19.1538 7.73573L16.4373 6.19628L13.7668 7.72803ZM23.8579 10.3066L21.0186 8.76716L19.9903 11.7768H17.4579L16.4987 9.02117H16.4603L15.5011 11.7768H12.9534L11.9251 8.77486L9.08579 10.3143C9.08579 10.3143 8.04982 13.855 12.0018 16.7646C13.011 17.5938 14.1389 18.2658 15.3476 18.7582L15.2018 18.2425H17.8109L17.6344 18.7582C18.8433 18.2725 19.9675 17.5969 20.9648 16.7569C24.8478 13.8165 23.8579 10.3066 23.8579 10.3066ZM18.0718 17.3881H14.8795L14.5342 16.372H18.4171L18.0718 17.3881ZM18.7164 15.5099H14.2349L13.8896 14.5016H19.0387L18.7164 15.5099ZM19.3533 13.6318H13.598L13.2527 12.6235H19.6987L19.3533 13.6318Z"/>
-                                </svg>
-                            </a>
-                            <p class="drweb-form__title">Проверка файлов</p>
-                        </div>
-                        <div class="drweb-form__bottom">
-                            <div class="drweb-form__text">
-                                <p class="drweb-form__inner" id="drweb_url_scan_init">
-                                    <span class="drweb-form_blue">Выберите</span> или перетащите файл (до 10 МБ)
-                                </p>
-                                <div id="drweb-form_file" class="drweb-form_file" style="display: none;">
-                                    <span class="drweb-form_blue" id="drweb_url_scan"></span>
-                                    <i>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                            <path d="M18.7076 17.2903C19.0975 17.6802 19.0975 18.3201 18.7076 18.7101C18.5077 18.9 18.2578 19 17.9979 19C17.738 19 17.488 18.9 17.2881 18.7101L12 13.421L6.71189 18.7101C6.51196 18.9 6.26205 19 6.00214 19C5.74223 19 5.49232 18.9 5.2924 18.7101C4.90253 18.3201 4.90253 17.6802 5.2924 17.2903L10.5805 12.0012L5.2924 6.71219C4.90253 6.32226 4.90253 5.68238 5.2924 5.29245C5.68226 4.90252 6.32203 4.90252 6.71189 5.29245L12 10.5815L17.2881 5.29245C17.678 4.90252 18.3177 4.90252 18.7076 5.29245C19.0975 5.68238 19.0975 6.32226 18.7076 6.71219L13.4195 12.0012L18.7076 17.2903Z" fill="#006AF5"/>
-                                        </svg>
-                                    </i>
-                                </div>
-                                <input class="drweb-form__input" name="file" id="file_selection_input" type="file" title="Обзор"
-                                       onchange="document.querySelector('.drweb-form_file').style.display = 'flex'; document.getElementById('drweb_url_scan').innerHTML = event.target.files[0].name; document.getElementById('drweb_url_scan_init').style.display = 'none'">
-                            </div>
-                            <button type="button" onclick="do_scan_file_01();" class="drweb-form__btn">Проверить</button>
-                        </div>
-                    </div>
-                </form>
-
             </section>
         </div>
     </main>
@@ -419,19 +281,6 @@
             <p>&copy; 2025 Metro Diplom. Все права защищены.</p>
         </div>
     </footer>
-
-    <script>
-        function do_scan_file_01() {
-            var left = (screen.width - 640) / 2;
-            var top = (screen.height - 400) / 2;
-            window.open(
-                "",
-                "drweb_scan_drweb-form_popup_window",
-                "width=640,height=400,left=" + left + ",top=" + top + ",scrollbars=yes,resizable=yes"
-            );
-            document.getElementById("drweb_online_scan_form").submit();
-        }
-    </script>
 
 </body>
 </html>
